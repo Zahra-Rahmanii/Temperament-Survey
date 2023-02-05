@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'Css/bootstrap-rtl.css' %}">
+    <link rel="stylesheet" href="{% static 'Css/utilities.css' %}">
+    <link rel="stylesheet" href="{% static 'Css/style.css' %}">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
+      crossorigin="anonymous"
+    />
+    <title>Welcom To website</title>
+  </head>
+  <body>
+    {% block content %} {% endblock %}
+    <footer class="main-footer">
+        <div class="footer-content container">
+          <p>Copyright &copy; 2019. All Rights Reserved</p>
+          <div class="social">
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin"></i>
+          </div>
+        </div>
+    </footer>
+      <script
+      src="https://code.jquery.com/jquery-3.5.0.min.js"
+      integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+      crossorigin="anonymous"
+      ></script>
+      <script>
+        const navbar = document.getElementById('navbar');
+        let scrolled = false;
+  
+        window.onscroll = function () {
+          if (window.pageYOffset > 100) {
+            navbar.classList.remove('top');
+            if (!scrolled) {
+              navbar.style.transform = 'translateY(-70px)';
+            }
+            setTimeout(function () {
+              navbar.style.transform = 'translateY(0)';
+              scrolled = true;
+            }, 200);
+          } else {
+            navbar.classList.add('top');
+            scrolled = false;
+          }
+        };
+  
+        // Smooth Scrolling
+        $('#navbar a, .btn').on('click', function (e) {
+          if (this.hash !== '') {
+            e.preventDefault();
+  
+            const hash = this.hash;
+  
+            $('html, body').animate(
+              {
+                scrollTop: $(hash).offset().top - 100,
+              },
+              800
+            );
+          }
+        });
+      </script>
+  </body>
+</html>
+

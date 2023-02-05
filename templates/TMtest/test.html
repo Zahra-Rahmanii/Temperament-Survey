@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content  %}
+<header class="hero hero-test">
+    <nav id="navbar" class="navbar top">
+      <div class="nav-right">
+          <a href=""><i class="far fa-user"></i></a>
+          <a href=""><i class="fas fa-shopping-cart"></i></a>
+          <a href="" class="active"><i class="fas fa-home "></i></a>
+          <a href=""><i class="fas fa-search"></i></a>
+      </div>
+      <div class="nav-left">
+          <div class="register-login-btn">
+              <i class="fas fa-user"></i>
+              <a href="#">ثبت نام / ورود</a>
+          </div>
+      </div>
+    </nav>
+    <div class="content">
+      <div class="container text-center">
+            <h1> تست هویت شناسی و مزاج شناسی</h1>
+            <h6 class="py-2 text-center">هدف از این تست شناسایی مزاج و هویت شماست لطفا با صداقت کامل به سِوالات پاسخ دهید</h5>    
+      </div>
+    </div>
+</header>
+<section class="multi-quiz py-4">
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md-8 offset-md-2">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <input  type="submit" value="Make Prediction">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
